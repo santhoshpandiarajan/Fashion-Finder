@@ -3,13 +3,13 @@
 
 ## Style Match Made Easy Where Fashion Meets AI!
 
-Welcome to the Fashion Product Image Similarity project, a demonstration of how machine learning techniques can be harnessed to identify and categorize visually similar fashion products. In this project, we aim to explore the capabilities of transfer learning and K-Nearest Neighbors (KNN) classification to build an efficient and accurate fashion image similarity system.
+Welcome to the Fashion Product Image Similarity project, a demonstration of how machine learning techniques can be harnessed to identify visually similar fashion products. In this project, we aim to explore the capabilities of transfer learning and K-Nearest Neighbors (KNN) classification to build an efficient and accurate fashion image similarity system.
 
 The objective of this project is to create an intelligent solution that aids fashion retailers and e-commerce platforms in providing personalized product recommendations to their customers. By leveraging a pre-trained VGG16 convolutional neural network, we extract essential features from fashion product images, transforming them into meaningful embeddings. These embeddings represent the distinctive characteristics of each product image.
 
 The process involves training a KNN classifier on the generated embeddings to establish relationships between products based on visual similarities. This allows us to efficiently find the nearest neighbors to a given image, enabling quick and effective similarity searches.
 
-The Fashion Finder project leverages the power of Intel oneAPI and the Intel Extension for Scikit-learn (sklearnex) to enhance the performance and capabilities of the machine learning algorithms used for image similarity and product recommendation.
+The Fashion Finder project leverages the power of Intel oneAPI and the Intel Extension for Scikit-learn (sklearnex) to enhance the performance and capabilities of the machine learning algorithms used for image similarity.
 
 Intel oneAPI provides a comprehensive software toolkit that enables developers to optimize code for various hardware architectures, including CPUs and GPUs. With oneAPI, the algorithms in the Fashion Finder project can be executed on different devices, such as CPUs and GPUs, to take advantage of the parallel processing capabilities of GPUs, resulting in faster computations and improved performance.
 
