@@ -1,4 +1,4 @@
-# Fashion-Finder: Discovering Visually Similar Products with AI
+# Fashion-Finder Using OneApi
 
 
 ## Style Match Made Easy Where Fashion Meets AI!
@@ -9,7 +9,14 @@ The objective of this project is to create an intelligent solution that aids fas
 
 The process involves training a KNN classifier on the generated embeddings to establish relationships between products based on visual similarities. This allows us to efficiently find the nearest neighbors to a given image, enabling quick and effective similarity searches.
 
-In the subsequent sections, we will delve into the technical details of the project, starting with data preparation and image preprocessing. We will explore how the VGG16 model is utilized for feature extraction, and how KNN classification facilitates image similarity analysis.
+The Fashion Finder project leverages the power of Intel oneAPI and the Intel Extension for Scikit-learn (sklearnex) to enhance the performance and capabilities of the machine learning algorithms used for image similarity and product recommendation.
+
+Intel oneAPI provides a comprehensive software toolkit that enables developers to optimize code for various hardware architectures, including CPUs and GPUs. With oneAPI, the algorithms in the Fashion Finder project can be executed on different devices, such as CPUs and GPUs, to take advantage of the parallel processing capabilities of GPUs, resulting in faster computations and improved performance.
+
+The Intel Extension for Scikit-learn (sklearnex) further extends the functionality of the scikit-learn library by integrating oneAPI concepts and the dpctl package. This integration allows the algorithms to be offloaded to specific devices using dpctl.tensor.usm_ndarray for input data or by setting global configurations using options like target_offload and allow_fallback_to_host.
+
+
+In the subsequent sections, we will delve into the details of the project, starting with data preparation and image preprocessing. We will explore how the VGG16 model is utilized for feature extraction, and how KNN classification facilitates image similarity analysis.
 
 This project is a valuable showcase of how modern machine learning techniques can be applied to real-world scenarios, enhancing the functionality of fashion-related applications and contributing to a more personalized shopping experience.
 
@@ -100,11 +107,13 @@ The line `styles_df = styles_df.reset_index(drop=True)` simply resets the index 
 
 ![15](https://github.com/santhoshpandiarajan/Fashion-Finder/assets/131739054/52da4c79-3c65-4c69-a30c-b1a92bf0bf3f)
 
-In this code segment, We import the `random` module, the `patch_sklearn()`. This function enhances functionalities of the `scikit-learn` library, improving performance. We import the `KNeighborsClassifier` which represents the KNN classifier, which is a simple and effective algorithm used for classification tasks in machine learning. The KNN classifier assigns a new data point to the majority class among its k-nearest neighbors, where k is a user-defined parameter.
+This section of code starts by importing modules and packages, such as `random` and `sklearnex` to integrate Intel oneAPI optimizations. The `patch_sklearn()` function from `sklearnex` is used to seamlessly integrate oneAPI concepts with scikit-learn.
 
-The variable `y` is assigned the values of the 'id' column from the DataFrame `styles_df`. This column contains the target labels or class information corresponding to each fashion product image.
+Next, the `KNeighborsClassifier` class is imported from `sklearnex.neighbors`, an extended version of scikit-learn's `KNeighborsClassifier`, which leverages Intel oneAPI optimizations for improved efficiency. The `styles_df` DataFrame contains the target labels ('id') used for training the `KNeighborsClassifier`. A new instance of the classifier is created with `n_neighbors=7`, indicating the number of neighbors used for classification. The model is then trained using the `fit()` method, where the feature data `X` and the target labels `y` are provided.
 
-We create an instance of the KNN classifier and set `n_neighbors=7`. This means that the classifier considers the seven nearest neighbors of a new data point when making predictions. The KNN classifier is trained on the provided data. `X` represents the feature vectors (embeddings) of the fashion product images, and `y` contains the corresponding class labels. The KNN classifier learns the relationships between the feature vectors and their corresponding labels during the training process.
+With the integration of `sklearnex`, the algorithm is optimized to run efficiently on different hardware, including CPUs and GPUs, resulting in faster and more accurate image similarity calculations.
+
+The usage of `sklearnex` in this project is essential as it taps into Intel oneAPI optimizations, improving the performance of the `KNeighborsClassifier`. By leveraging oneAPI concepts, the Fashion Finder project achieves faster and more accurate image similarity comparisons, enabling more efficient and personalized fashion product recommendations.
 
 After training, the KNN classifier can be utilized to predict the class labels of new or unseen fashion product images based on their feature vectors. The KNN algorithm is particularly useful for image classification tasks and can be applied to various other types of data as well.
 
